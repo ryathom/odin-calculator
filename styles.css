@@ -21,21 +21,31 @@ body {
   border-style: solid;
   border-color: black;
   border-radius: 12px;
-  box-shadow: -2px 2px 5px 0px #000000;
+  box-shadow: -2px 3px 0px 3px #000000;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   align-items: stretch;
+  transform: skew(2deg, 0deg);
 }
 
 .display {
-  flex-grow: 1;
   margin: 40px;
   margin-bottom: 20px;
+  height: 80px;
   background-color: darkgreen;
   border-style: solid;
   border-color: black;
   border-radius: 12px;
+  box-shadow: -1px 1px 0px 1px #000000 inset;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 10px;
+  font-family: 'Courier New', Courier, monospace;
+  color: white;
+  font-size: 60px;
 }
 
 .controls {
@@ -48,9 +58,8 @@ body {
 }
 
 .numpad {
-  flex-grow: 5;
+  flex-grow: 4;
   display: flex;
-  flex-grow: 1;
   flex-direction: column;
   justify-content: flex-start;
   align-items: stretch;
@@ -64,7 +73,7 @@ body {
   align-items: stretch;
 }
 
-.numkey {
+.numkey, .opkey {
   display: flex;
   flex-grow: 1;
   margin: 10px;
@@ -75,14 +84,28 @@ body {
   margin: 5px;
   justify-content: center;
   align-items: center;
+  box-shadow: -2px 3px 0px 1px #000000;
+  transition: all 0.1s;
+}
+
+.keypress {
+  transform: translate(-2px, 3px);
+  box-shadow: 0px 0px 0px 0px;
 }
 
 .operations {
-  margin-left: 40px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: stretch;
+}
+
+.opsrow {
   flex-grow: 1;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: stretch;
   align-items: stretch;
 }
 

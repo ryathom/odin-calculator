@@ -6,14 +6,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Calculator</title>
   <link rel="stylesheet" href="styles.css">
-  <script src="calculator.js"></script>
+  <script src="calculator.js" defer></script>
 </head>
 <body>
   <div class="header">
     <h1>calculator</h1>
   </div>
   <div class="calc">
-    <div class="display"></div>
+    <div class="display" id="calc-display"></div>
     <div class="controls">
       <div class="numpad">
         <div class="numrow">
@@ -36,11 +36,17 @@
         </div>
       </div>
       <div class="operations">
-        <div class="numkey add">+</div>
-        <div class="numkey sub">-</div>
-        <div class="numkey div">/</div>
-        <div class="numkey mul">*</div>
-        <div class="numkey equals">=</div>
+        <div class="opsrow">
+          <div class="opkey">+</div>
+          <div class="opkey">-</div>
+          <div class="opkey">*</div>
+          <div class="opkey">/</div>
+        </div>
+        <div class="opsrow">
+          <div class="opkey" id="clear">clear</div>
+          <div class="opkey">=</div>
+        </div>
+        
       </div>
     </div>
   </div>
