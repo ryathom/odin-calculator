@@ -2,21 +2,40 @@
 const display = document.querySelector('.display');
 
 const clearButton = document.querySelector('#clear');
+const equalsButton = document.querySelector('#equals');
 
+const addButton = document.querySelector('#add');
+const subButton = document.querySelector('#sub');
+const mulButton = document.querySelector('#mul');
+const divButton = document.querySelector('#div');
+
+const keys = document.querySelectorAll('.numkey, .opkey');
 const numkeys = document.querySelectorAll('.numkey');
+const opkeys = document.querySelectorAll('.opkey');
 
-
-
-let regA = null;
-let regB = null;
-let regOpcode = null;
-
+let regA = '';
+let regB = '';
+let regOpcode = '';
+let opcodeText = '';
 
 // Event Listeners
 clearButton.addEventListener('click', clearDisplay);
+equalsButton.addEventListener('click', equalsPress);
 
-numkeys.forEach(key => key.addEventListener('click', buttonPress));
-numkeys.forEach(key => key.addEventListener('transitionend', removeTransition));
+keys.forEach(key => key.addEventListener('click', buttonPress));
+keys.forEach(key => key.addEventListener('transitionend', removeTransition));
+
+numkeys.forEach(key => key.addEventListener('click', numPress));
+
+addButton.addEventListener('click', opPress);
+subButton.addEventListener('click', opPress);
+mulButton.addEventListener('click', opPress);
+divButton.addEventListener('click', opPress);
+
+addButton.opcode = 'ADD';
+subButton.opcode = 'SUB';
+mulButton.opcode = 'MUL';
+divButton.opcode = 'DIV';
 
 //Functions
 
@@ -51,29 +70,55 @@ function operate(operator, A, B) {
   }
 }
 
+// Press Animation
 function buttonPress() {
   this.classList.add('keypress');
-
-  let num = this.textContent;
-  regB += num;
-  updateDisplay(num);
 }
 
 function removeTransition(e) {
   this.classList.remove('keypress');
 }
 
-// stores opcode in reg, copies reg B to reg A
-function opPress() {
-  let opcode = this.opcode;
+function numPress() {
+  let num = this.textContent;
+  regB += num;
+  console.log(regB);
+  updateDisplay();
 }
 
-function updateDisplay(displayText) {
+function opPress() {
+  let opcode = this.opcode;
+
+  console.log(opcode);
+  regA = regB;
+  opcodeText= this.textContent;
+  regOpcode = opcode;
+  regB = '';
+
+  updateDisplay();
+}
+
+function equalsPress() {
+  let A = parseInt(regA);
+  let B = parseInt(regB);
+  let ans = operate(regOpcode, A, B);
+
+  clearDisplay();
+  regB = ans;
+  updateDisplay();
+}
+
+function updateDisplay() {
+  let displayText = regA + opcodeText + regB;
   display.textContent = displayText;
 }
 
 function clearDisplay() {
-  updateDisplay('');
+  regA = '';
+  regB = '';
+  regOpcode = '';
+  opcodeText = ''
+  updateDisplay();
 }
 
 
