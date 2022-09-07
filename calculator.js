@@ -87,9 +87,12 @@ function numPress() {
 }
 
 function opPress() {
+  if (regOpcode !== '') {
+    equalsPress();
+  }
+
   let opcode = this.opcode;
 
-  console.log(opcode);
   regA = regB;
   opcodeText= this.textContent;
   regOpcode = opcode;
