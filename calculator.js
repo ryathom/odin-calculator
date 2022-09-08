@@ -82,7 +82,6 @@ function removeTransition(e) {
 function numPress() {
   let num = this.textContent;
   regB += num;
-  console.log(regB);
   updateDisplay();
 }
 
@@ -102,13 +101,18 @@ function opPress() {
 }
 
 function equalsPress() {
-  let A = parseInt(regA);
-  let B = parseInt(regB);
+  let A = parseFloat(regA);
+  let B = parseFloat(regB);
   let ans = operate(regOpcode, A, B);
+  ans = roundResult(ans);
 
   clearDisplay();
   regB = ans;
   updateDisplay();
+}
+
+function roundResult(number) {
+  return Math.round(number * 100000) / 100000
 }
 
 function updateDisplay() {

@@ -17,7 +17,7 @@ body {
 .calc {
   height: 480px;
   width: 480px;
-  background-color: grey;
+  background-color: slategray;
   border-style: solid;
   border-color: black;
   border-radius: 12px;
@@ -26,7 +26,7 @@ body {
   flex-direction: column;
   justify-content: space-evenly;
   align-items: stretch;
-  transform: skew(2deg, 0deg);
+  transform: skew(5deg, 0deg);
 }
 
 .display {
@@ -58,7 +58,7 @@ body {
 }
 
 .numpad {
-  flex-grow: 4;
+  flex-grow: 3;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -86,6 +86,16 @@ body {
   align-items: center;
   box-shadow: -2px 3px 0px 1px #000000;
   transition: all 0.1s;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 20px;
+}
+
+.opkey {
+  background-color: grey
+}
+
+#clear {
+  background-color: rgba(188, 62, 23, 0.752)
 }
 
 .keypress {
@@ -94,7 +104,7 @@ body {
 }
 
 .operations {
-  flex-grow: 1;
+  flex-grow: 2;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
